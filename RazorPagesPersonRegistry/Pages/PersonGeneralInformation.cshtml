@@ -1,0 +1,15 @@
+﻿@page
+@model RazorPagesPersonRegistry.Pages.PersonGeneralInformationModel
+@{
+}
+
+<form asp-page-handler="" method="post">
+    <label asp-for="FirstName">First Name</label><br />
+    <input type="text" asp-for="FirstName" /><br /><br />
+    <label asp-for="LastName">Last Name</label><br />
+    <input type="text" asp-for="LastName" /><br /><br />
+    <label asp-for="Age">Age</label><br />
+    <input type="text" asp-for="Age" /><br /><br />
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-primary" type="submit">Next</button>
+</form>

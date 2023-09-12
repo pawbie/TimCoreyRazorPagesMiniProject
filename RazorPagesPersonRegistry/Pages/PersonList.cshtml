@@ -1,0 +1,17 @@
+﻿@page
+@model RazorPagesPersonRegistry.Pages.PersonListModel
+@{
+}
+
+<h2>Person Registry</h2>
+
+<br />
+<form method="post">
+    <button class="btn btn-primary" type="submit">Add person</button>
+</form>
+<br />
+<h4>Person list:</h4>
+@foreach (var person in Model.Persons)
+{
+    <a asp-page="PersonGeneralInformation" asp-page-handler="EditPerson" asp-route-firstname="@person.FirstName" asp-route-lastname="@person.LastName" asp-route-age="@person.Age" asp-route-id="@person.Id" class="page-link">@person.DisplayName</a>
+}

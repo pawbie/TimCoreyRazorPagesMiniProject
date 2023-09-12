@@ -1,0 +1,45 @@
+﻿@page
+@model RazorPagesPersonRegistry.Pages.PersonAddressInformationModel
+@{
+}
+
+<form method="post" id="addressForm" asp-page-handler="AddAddress">
+    <input type="hidden" asp-for="Person.FirstName" />
+    <input type="hidden" asp-for="Person.LastName" />
+    <input type="hidden" asp-for="Person.Age" />
+    <input type="hidden" asp-for="Person.Id" />
+    
+    @for(int i = 0; i < Model.Addresses.Count; i++ )
+    {
+        <input type="hidden" asp-for="Addresses[i].City" />
+        <input type="hidden" asp-for="Addresses[i].Street" />
+        <input type="hidden" asp-for="Addresses[i].PostalCode" />
+    }
+
+    <label asp-for="City">City</label><br />
+    <input type="text" asp-for="City" /><br /><br />
+    <label asp-for="Street">Street</label><br />
+    <input type="text" asp-for="Street" /><br /><br />
+    <label asp-for="PostalCode">Postal Code</label><br />
+    <input type="text" asp-for="PostalCode" /><br /><br />
+    <button class="btn btn-secondary" type="submit" form="addressForm">Add adress</button>
+    <button class="btn btn-primary" type="submit" form="personForm">Save Person</button>
+</form>
+<br />
+@foreach(var addresses in Model.Addresses)
+{
+    <a class="page-link">@addresses.DisplayName</a>
+}
+<form id="personForm" asp-page-handler="AddPerson">
+    @for (int i = 0; i < Model.Addresses.Count; i++)
+    {
+        <input type="hidden" asp-for="Addresses[i].City" />
+        <input type="hidden" asp-for="Addresses[i].Street" />
+        <input type="hidden" asp-for="Addresses[i].PostalCode" />
+    }
+
+    <input type="hidden" asp-for="Person.FirstName" />
+    <input type="hidden" asp-for="Person.LastName" />
+    <input type="hidden" asp-for="Person.Age" />
+    <input type="hidden" asp-for="Person.Id" />
+</form>
